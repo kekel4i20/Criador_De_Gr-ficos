@@ -88,8 +88,11 @@ def pizza():
     titulo = input('\nQual será o titulo do gráfico?\n> ')
     tamanho_titulo = int(input('\nQual o tamanho do titulo?\n> '))
     for i in range(quantidade_fatias):
-        quantidade_destaque = float(input(f'\nQual o tamanho do destaque que você irá dar para esta fatia {lista_x[i]}\n> '))
-        destaque.append(quantidade_destaque)
+        quantidade_destaque = input(f'\nDar destaque para esta fatia? (S/N): {lista_x[i]}\n> ').lower()
+        if quantidade_destaque == 's':
+            destaque.append(0.1)
+        elif quantidade_destaque == 'n':
+            destaque.append(0)
 
     font1 =  {'family' : 'arial'}
     plt.pie(lista_x, labels=lista_y, colors=cores,explode=destaque ,shadow=True, autopct='%1.1f%%') 
